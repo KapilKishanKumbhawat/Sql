@@ -54,6 +54,15 @@ select * from StudentChetu,studentChetu1 where StudentChetu.id = StudentChetu1.i
 /*Full Outer Join*/
 select * from StudentChetu full outer join StudentChetu1 on StudentChetu.id=StudentChetu1.id
 
+/* Self Join */
+
+select * from StudentChetu 
+Where StudentChetu as e1, StudentChetu1 as e2 
+where e1.name = e2.name 
+and e1.email='kapil@gmail.com'; /* error show in table*/
+
+
+
 /* union */
 
 
@@ -81,4 +90,17 @@ rollback
 
 begin transaction 
 delete from StudentChetu where id=1
+delete from StudentChetu where id=2
+save transaction Test1
+delete from StudentChetu where id=3
 
+begin transaction Test1
+rollback
+
+
+/* database Particular column name Change */
+
+select * from StudentChetu
+
+alter table StudentChetu
+CHANGE phone salary varchar (50)  
